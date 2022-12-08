@@ -86,7 +86,7 @@ const Navbar = () => {
 
 
   return (
-    <header className='max-w-7xl mx-auto px-3 sm:px-10'>
+    <header className='w-full mx-auto px-3 sm:px-8 sticky top-0 left-0 z-10  bg-white'>
       {/* <div className='flex justify-between items-center bg-secondary text-xs md:text-sm  font-semibold px-3 sm:px-10 py-4'>
         <div className='flex flex-col md:flex-row'>
           <h4 className=' text-white inline-block mr-5 sm:mr-10'>Contact Number: 090 98763456</h4>
@@ -98,7 +98,7 @@ const Navbar = () => {
       </div> */}
 
       <nav className='my-4'>
-        <div className="navbar bg-base-100 ">
+        <div className="navbar ">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex="0" className="btn btn-ghost lg:hidden ml-2">
@@ -148,11 +148,6 @@ const Navbar = () => {
         </div>
       </nav>
     </header>
-
-
-
-
-
   );
 };
 

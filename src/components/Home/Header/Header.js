@@ -129,7 +129,7 @@ const Header = ({ type }) => {
                   <FontAwesomeIcon icon={faParking} className="headerIcon h-5 mr-1" />
                   <span
                     onClick={() => setOpenOptions(!openOptions)}
-                    className="headerSearchText"
+                    className="headerSearchText text-lg"
                   >{` ${options.sloots} sloots`}</span>
                   {openOptions && (
                     <div className="options font-semibold">
