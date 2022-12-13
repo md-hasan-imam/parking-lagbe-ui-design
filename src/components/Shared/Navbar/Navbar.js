@@ -8,9 +8,6 @@ import avatarImg from '../../assets/images/avatar.png'
 import logo from '../../assets/images/logo.png'
 
 
-
-
-
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,7 +18,7 @@ const Navbar = () => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get("api/auth/users/logout");
+      const response = await axios.get("http://localhost:9000/api/auth/users/logout");
       if (response.status === 200) {
         alert(response.data.message);
         localStorage.removeItem("auth")
@@ -45,11 +42,6 @@ const Navbar = () => {
 
 
 
-
-
-
-
-
   const menuItems = <>
 
     <li>
@@ -68,11 +60,7 @@ const Navbar = () => {
 
     {state !== null ? (
       <>
-
-        <li><Link className='hover:text-primary active:text-primary focus:text-primary px-4 py-2'>{state?.isUser.email}</Link></li>
         <li><Link to="/dashboard" className='hover:text-primary active:text-primary focus:text-primary px-4 py-2'>DashBoard</Link></li>
-        <li> <Link onClick={handleLogout} className='hover:text-primary active:text-primary focus:text-primary px-4 py-2'>Logout</Link></li>
-
       </>
     )
       : (
@@ -87,16 +75,6 @@ const Navbar = () => {
 
   return (
     <header className='w-full mx-auto px-3 sm:px-8 sticky top-0 left-0 z-10  bg-white'>
-      {/* <div className='flex justify-between items-center bg-secondary text-xs md:text-sm  font-semibold px-3 sm:px-10 py-4'>
-        <div className='flex flex-col md:flex-row'>
-          <h4 className=' text-white inline-block mr-5 sm:mr-10'>Contact Number: 090 98763456</h4>
-          <h3 className=' text-white inline-block '>Location : 22, South Wales, New York</h3>
-        </div>
-        <div className='text-white'>
-          <SocialIcons></SocialIcons>
-        </div>
-      </div> */}
-
       <nav className='my-4'>
         <div className="navbar ">
           <div className="navbar-start">
@@ -128,7 +106,7 @@ const Navbar = () => {
                   </label>
                   <ul tabIndex={5} className="dropdown-content menu p-2 shadow bg-base-100 rounded-xl w-52">
                     <li><Link to='/dashboard'>Dashboard</Link></li>
-                    <li><button className="">Logout</button></li>
+                    <li><button onClick={handleLogout} className="">Logout</button></li>
                   </ul>
                 </div>
                 :

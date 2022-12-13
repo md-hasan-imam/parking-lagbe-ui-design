@@ -71,7 +71,7 @@ const SingleSearchItem = () => {
       {loading ? (
         "loading"
       ) : (
-        <div className="hotelContainer">
+        <div className="hotelContainer my-10">
           {open && (
             <div className="slider">
               <FontAwesomeIcon
@@ -98,59 +98,51 @@ const SingleSearchItem = () => {
               />
             </div>
           )}
-          <div className="hotelWrapper">
-
-            <h1 className="hotelTitle">{data.name}</h1>
-            <div className="hotelAddress">
-              <FontAwesomeIcon icon={faLocationDot} />
-              <span>{data.address}</span>
-            </div>
-            <span className="hotelDistance">
-              Excellent location – {data.distance}m from center
-            </span>
-            <span className="hotelPriceHighlight">
-              Book a stay over ${data.cheapestPrice} at this property and get a
-              free airport taxi
-            </span>
-            <div className="hotelImages">
-              {data.photos?.map((photo, i) => (
-                <div className="hotelImgWrapper" key={i}>
-                  <img
-                    onClick={() => handleOpen(i)}
-                    src={photo}
-                    alt=""
-                    className="hotelImg"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="hotelDetails">
-              <div className="hotelDetailsTexts">
-                <h1 className="hotelTitle">{data.title}</h1>
-                <p className="hotelDesc">{data.desc}</p>
+          <div className="grid lg:grid-cols-2 ">
+            <div className="grid grid-cols-2 my-auto p-3 gap-5 border border-solid border-secondary rounded-xl mx-auto">
+              <div className="hotelImages">
+                {data.photos?.map((photo, i) => (
+                  <div className="hotelImgWrapper" key={i}>
+                    <img
+                      onClick={() => handleOpen(i)}
+                      src={photo}
+                      alt=""
+                      className="w-full rounded "
+                    />
+                  </div>
+                ))}
               </div>
+              <div>
+                <h1 className="hotelTitle text-xl lg:text-2xl">{data.name}</h1>
+                <div className="hotelAddress">
+                  <FontAwesomeIcon icon={faLocationDot} />
+                  <span>{data.address}</span>
+                </div>
+                <span className="hotelDistance block mt-4">
+                  Excellent location – {data.distance}m from center
+                </span>
+                <span className="hotelPriceHighlight">
+                  Book a stay over ${data.cheapestPrice} at this property and get a
+                  free airport taxi
+                </span>
+                <div className="hotelDetailsTexts">
+                  <h1 className="hotelTitle text-xl lg:text-2xl">{data.title}</h1>
+                  <p className="hotelDesc">{data.desc}</p>
+                </div>
+              </div>
+            </div>
+            <div className="hotelDetails flex flex-col justify-center max-w-md mx-auto text-center">
               <div className="hotelDetailsPrice">
-                <h1>Perfect for a {days}-night stay!</h1>
+                <h1 className="text-secondary">Perfect for a {days}-night stay!</h1>
                 <span>
                   Located in the real heart of Krakow, this property has an
                   excellent location score of 9.8!
                 </span>
-                <h2>
-                  <b>${days * data.cheapestPrice * options.sloots}</b> ({days}{" "}
-
-
-                  nights)
-
-
-
-
-
-                </h2>
-                <button onClick={handleClick}>Reserve or Booking Parking Right Now!</button>
+                <h2><b>${days * data.cheapestPrice * options.sloots}</b> ({days}{" "}nights) </h2>
+                <button onClick={handleClick} className="btn btn-primary lg:w-2/3 font-medium leading-5 mx-auto">Reserve or Booking Parking Right Now!</button>
               </div>
             </div>
           </div>
-
         </div>
       )}
       {openModal && <Reserve setOpen={setOpenModal} parkingSlotId={id} />}

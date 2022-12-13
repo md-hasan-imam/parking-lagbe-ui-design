@@ -17,10 +17,12 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { UserContext } from "../../context/Context";
+import useFetch from "../../hooks/useFetch";
 
 
 
 const Header = ({ type }) => {
+  const { data: allParkingAreas } = useFetch("http://localhost:9000/api/parking/allParkings");
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
   const [dates, setDates] = useState([
@@ -32,12 +34,31 @@ const Header = ({ type }) => {
   ]);
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
-
     sloots: 1,
   });
 
   const navigate = useNavigate();
   const [state, setState] = useContext(UserContext)
+  const [matchedAreas, setMatchedAreas] = useState([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [searchText, setSearchText] = useState('')
+  const [selectedAreaName, setSelectedAreaName] = useState('')
+
+  const handleAreaSearch = (srcText) => {
+    setSearchText(srcText)
+    if (srcText) {
+      const matchedAreas = allParkingAreas.filter(area => area.name.toLowerCase().includes(srcText.toLowerCase()))
+      if (matchedAreas.length) {
+        setMatchedAreas(matchedAreas)
+        setIsModalOpen(true)
+      } else {
+        setMatchedAreas([])
+      }
+    } else {
+      setMatchedAreas([])
+      setIsModalOpen(false)
+    }
+  }
 
 
   const handleOption = (name, operation) => {

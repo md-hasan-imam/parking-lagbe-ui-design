@@ -9,6 +9,8 @@ import HomePage from "./components/Home/HomePage/HomePage";
 import List from "./components/ParkingBooking/SearchList/List"
 import SingleSearchItem from "./components/ParkingBooking/SingleSearchItem/SingleSearchItem";
 import StripePayment from "./components/ParkingBooking/Pay/StripePayment";
+import Dashboard from "./components/Shared/dashboard/Dashboard";
+import Contact from "./components/Home/Contact/Contact";
 
 
 
@@ -23,7 +25,15 @@ function App() {
         <Route path="/Parking/:id" element={<SingleSearchItem />} />
         <Route path="/pay" element={<StripePayment />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard></Dashboard>} />
+
+        {/* <Route path='dashboard' element={<Dashboard></Dashboard>}>
+          <Route index element={<UserAppointments></UserAppointments>}></Route>
+          <Route path='history' element={<UsersHistory></UsersHistory>}></Route>
+          <Route path='review' element={<UserReview></UserReview>}></Route>
+        </Route> */}
 
         <Route path="/reset-password" element={<ForgetPassword />} />
         <Route path="/user/reset/:id/:token" element={<ChangePassword />} />

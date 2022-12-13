@@ -4,11 +4,11 @@ import "./SearchItem.css";
 const SearchItem = ({ item }) => {
   return (
     <div className="searchItem">
-      <img src={item.photos[0]} alt="" className="siImg" />
+      <img src={item.photos[0]} alt="" className="siImg rounded" />
       <div className="siDesc">
         <h1 className="siTitle">{item.name}</h1>
         <span className="siDistance">{item.distance}m from center</span>
-        <span className="siTaxiOp">Free airport taxi</span>
+        <span className="siTaxiOp px-2 py-1">Free airport taxi</span>
         <span className="siSubtitle">
           Studio Apartment with Air conditioning
         </span>
@@ -27,7 +27,7 @@ const SearchItem = ({ item }) => {
           <span className="siPrice">${item.cheapestPrice}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
           <Link to={`/Parking/${item._id}`}>
-          <button className="siCheckButton">See availability</button>
+            <button className="siCheckButton px-3 text-sm mt-3 lg:text-md font-medium">See availability</button>
           </Link>
         </div>
       </div>
